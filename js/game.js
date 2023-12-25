@@ -1,5 +1,6 @@
 let canvas;
 let world;
+let canvasWidth = 720;
 let canvasHeight = 480;
 
 function init() {

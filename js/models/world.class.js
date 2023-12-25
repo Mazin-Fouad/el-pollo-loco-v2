@@ -3,6 +3,7 @@ class World {
   enemies = [new Chicken(), new Chicken(), new Chicken()];
   clouds = [new Cloud()];
   backgroundObjects = [
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 0),
     new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 0),
     new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 0),
     new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 0),
@@ -20,10 +21,10 @@ class World {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Draw the character, enemies, clouds, and background objects
+    this.addObjects(this.backgroundObjects);
     this.drawImage(this.character);
     this.addObjects(this.enemies);
     this.addObjects(this.clouds);
-    this.addObjects(this.backgroundObjects);
 
     // Request the next animation frame
     requestAnimationFrame(() => this.draw());
