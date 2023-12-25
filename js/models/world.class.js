@@ -2,7 +2,11 @@ class World {
   character = new Character();
   enemies = [new Chicken(), new Chicken(), new Chicken()];
   clouds = [new Cloud()];
-  backgroundObjects = [new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 0, 120)];
+  backgroundObjects = [
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 0),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 0),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 0),
+  ];
   ctx;
   canvas;
   constructor(canvas) {
