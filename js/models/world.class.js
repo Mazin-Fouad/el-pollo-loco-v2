@@ -1,6 +1,7 @@
 class World {
   character = new Character();
-  enemies = [new Chicken(), new Chicken(), new Chicken()];
+  chickens = [new Chicken(), new Chicken(), new Chicken()];
+  chicks = [new Chicks(), new Chicks(), new Chicks()];
   clouds = [new Cloud()];
   backgroundObjects = [
     new BackgroundObject('./assets/imgs/5_background/layers/air.png', 0),
@@ -23,7 +24,8 @@ class World {
     // Draw the character, enemies, clouds, and background objects
     this.addObjects(this.backgroundObjects);
     this.drawImage(this.character);
-    this.addObjects(this.enemies);
+    this.addObjects(this.chickens);
+    this.addObjects(this.chicks);
     this.addObjects(this.clouds);
 
     // Request the next animation frame
