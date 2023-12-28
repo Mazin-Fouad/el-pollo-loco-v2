@@ -9,6 +9,7 @@ class World {
     new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 0),
     new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 0),
   ];
+  bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()];
   ctx;
   canvas;
   constructor(canvas) {
@@ -26,6 +27,7 @@ class World {
     this.drawImage(this.character);
     this.addObjects(this.chickens);
     this.addObjects(this.chicks);
+    this.addObjects(this.bottles);
     this.addObjects(this.clouds);
 
     // Request the next animation frame
