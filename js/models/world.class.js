@@ -1,7 +1,7 @@
 class World {
   character = new Character();
   chickens = [new Chicken(), new Chicken(), new Chicken()];
-  chicks = [new Chicks(), new Chicks(), new Chicks()];
+  chicks = [new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks()];
   clouds = [new Cloud()];
   backgroundObjects = [
     new BackgroundObject('./assets/imgs/5_background/layers/air.png', 0),
