@@ -46,7 +46,17 @@ class World {
   }
 
   drawImage(entity) {
+    if (entity.otherDirection) {
+      this.ctx.save();
+      this.ctx.translate(entity.width, 0);
+      this.ctx.scale(-1, 1);
+      entity.x = entity.x * -1;
+    }
     this.ctx.drawImage(entity.img, entity.x, entity.y, entity.width, entity.height);
+    if (entity.otherDirection) {
+      entity.x = entity.x * -1;
+      this.ctx.restore();
+    }
   }
 }
 
