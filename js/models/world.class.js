@@ -4,15 +4,43 @@ class World {
   chicks = [new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks(), new Chicks()];
   clouds = [new Cloud()];
   backgroundObjects = [
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', -719),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/2.png', -719),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/2.png', -719),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/2.png', -719),
+
     new BackgroundObject('./assets/imgs/5_background/layers/air.png', 0),
     new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 0),
     new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 0),
     new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 0),
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 719),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/2.png', 719),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/2.png', 719),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/2.png', 719),
+
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 719 * 2),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 719 * 2),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 719 * 2),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 719 * 2),
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 719 * 3),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/2.png', 719 * 3),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/2.png', 719 * 3),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/2.png', 719 * 3),
+
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 719 * 4),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/1.png', 719 * 4),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/1.png', 719 * 4),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/1.png', 719 * 4),
+    new BackgroundObject('./assets/imgs/5_background/layers/air.png', 719 * 5),
+    new BackgroundObject('./assets/imgs/5_background/layers/3_third_layer/2.png', 719 * 5),
+    new BackgroundObject('assets/imgs/5_background/layers/2_second_layer/2.png', 719 * 5),
+    new BackgroundObject('./assets/imgs/5_background/layers/1_first_layer/2.png', 719 * 5),
   ];
   bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()];
   ctx;
   canvas;
   keyboard;
+  camera_x = 0;
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
@@ -29,6 +57,8 @@ class World {
     // Clear the canvas
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+    this.ctx.translate(this.camera_x, 0);
+
     // Draw the character, enemies, clouds, and background objects
     this.addObjects(this.backgroundObjects);
     this.drawImage(this.character);
@@ -36,6 +66,8 @@ class World {
     this.addObjects(this.chicks);
     this.addObjects(this.bottles);
     this.addObjects(this.clouds);
+
+    this.ctx.translate(-this.camera_x, 0);
 
     // Request the next animation frame
     requestAnimationFrame(() => this.draw());
