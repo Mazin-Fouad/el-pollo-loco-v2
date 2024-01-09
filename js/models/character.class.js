@@ -11,6 +11,7 @@ class Character extends MovableObject {
   ];
   world;
   speed = 8;
+  walking_sound = new Audio('./assets/audio/footstep.mp3');
   constructor() {
     super();
     this.loadImg('./assets/imgs/2_character_pepe/2_walk/W-21.png');
@@ -19,15 +20,18 @@ class Character extends MovableObject {
   }
 
   animate() {
+    this.walking_sound.pause();
     setInterval(() => {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.x += this.speed;
         this.otherDirection = false;
+        this.walking_sound.play();
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.x -= this.speed;
         this.otherDirection = true;
+        this.walking_sound.play();
       }
 
       this.world.camera_x = -this.x + 100;
