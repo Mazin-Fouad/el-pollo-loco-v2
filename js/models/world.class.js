@@ -1,11 +1,6 @@
 class World {
   character = new Character();
-  chickens = level1.chickens;
-  chicks = level1.chicks;
-  clouds = level1.clouds;
-  backgroundObjects = level1.backgroundObjects;
-  bottles = level1.bottles;
-  coins = level1.coins;
+  level = level1;
   ctx;
   canvas;
   keyboard;
@@ -30,13 +25,13 @@ class World {
     this.ctx.translate(this.camera_x, 0);
 
     // Draw the character, enemies, clouds, and background objects
-    this.addObjects(this.backgroundObjects);
+    this.addObjects(this.level.backgroundObjects);
     this.drawImage(this.character);
-    this.addObjects(this.chickens);
-    this.addObjects(this.chicks);
-    this.addObjects(this.bottles);
-    this.addObjects(this.clouds);
-    this.addObjects(this.coins);
+    this.addObjects(this.level.chickens);
+    this.addObjects(this.level.chicks);
+    this.addObjects(this.level.bottles);
+    this.addObjects(this.level.clouds);
+    this.addObjects(this.level.coins);
 
     this.ctx.translate(-this.camera_x, 0);
 
