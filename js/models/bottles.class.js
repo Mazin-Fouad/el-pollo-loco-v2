@@ -14,10 +14,7 @@ class Bottle extends MovableObject {
 
   animate() {
     setInterval(() => {
-      let i = this.currentImage % this.IMAGES.length;
-      let path = this.IMAGES[i];
-      this.img = this.imageCache[path];
-      this.currentImage++;
+      this.playAnimation(this.IMAGES);
     }, 1000);
   }
 }
