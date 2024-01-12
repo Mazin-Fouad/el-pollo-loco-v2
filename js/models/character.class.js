@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-  y = 210;
+  y = 80;
   height = 220;
   IMAGES_WALKING = [
     './assets/imgs/2_character_pepe/2_walk/W-21.png',
@@ -17,6 +17,7 @@ class Character extends MovableObject {
     this.loadImg('./assets/imgs/2_character_pepe/2_walk/W-21.png');
     this.loadImgs(this.IMAGES_WALKING);
     this.animate();
+    this.applyGravity();
   }
 
   animate() {
