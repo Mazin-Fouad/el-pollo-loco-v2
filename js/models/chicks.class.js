@@ -11,14 +11,16 @@ class Chicks extends MovableObject {
     super();
     this.loadImg('./assets/imgs/3_enemies_chicken/chicken_small/1_walk/1_w.png');
     this.x = 250 + Math.random() * 3000;
-    this.speed = 0.15 + Math.random() * 0.7;
+    this.speed = 0.8 + Math.random() * 0.7;
     this.loadImgs(this.IMAGES_WALKING);
     this.animate();
   }
 
   animate() {
+    setInterval(() => {
+      this.moveToLeft();
+    }, 1000 / 60);
     this.updateImage();
-    this.moveToLeft();
   }
 
   updateImage() {

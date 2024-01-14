@@ -12,10 +12,45 @@ class World {
 
     this.draw();
     this.setWorld();
+    this.checkCollisions();
   }
 
   setWorld() {
     this.character.world = this;
+  }
+
+  checkCollisions() {
+    setInterval(() => {
+      this.level.chickens.forEach((chicken) => {
+        if (this.character.isColliding(chicken)) {
+          console.log('collided', chicken);
+        }
+      });
+    }, 1000);
+
+    setInterval(() => {
+      this.level.chicks.forEach((chick) => {
+        if (this.character.isColliding(chick)) {
+          console.log('collided', chick);
+        }
+      });
+    }, 1000);
+
+    setInterval(() => {
+      this.level.bottles.forEach((bottle) => {
+        if (this.character.isColliding(bottle)) {
+          console.log('collided', bottle);
+        }
+      });
+    }, 1000);
+
+    setInterval(() => {
+      this.level.coins.forEach((coin) => {
+        if (this.character.isColliding(coin)) {
+          console.log('collided', coin);
+        }
+      });
+    }, 1000);
   }
 
   draw() {
@@ -45,16 +80,26 @@ class World {
 
   drawImage(entity) {
     if (entity.otherDirection) {
-      this.ctx.save();
-      this.ctx.translate(entity.width, 0);
-      this.ctx.scale(-1, 1);
-      entity.x = entity.x * -1;
+      this.flipImag(entity);
     }
-    this.ctx.drawImage(entity.img, entity.x, entity.y, entity.width, entity.height);
+    entity.draw(this.ctx);
+    entity.drawRectangle(this.ctx);
+
     if (entity.otherDirection) {
-      entity.x = entity.x * -1;
-      this.ctx.restore();
+      this.resetFlipImage(entity);
     }
+  }
+
+  flipImag(entity) {
+    this.ctx.save();
+    this.ctx.translate(entity.width, 0);
+    this.ctx.scale(-1, 1);
+    entity.x = entity.x * -1;
+  }
+
+  resetFlipImage(entity) {
+    entity.x = entity.x * -1;
+    this.ctx.restore();
   }
 }
 
