@@ -10,6 +10,8 @@ class MovableObject {
   speedY = 0;
   acceleration = 2.5;
   otherDirection = false;
+  energy = 100;
+  lastHit = 0;
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -75,5 +77,24 @@ class MovableObject {
 
   isColliding(obj) {
     return this.x < obj.x + obj.width && this.x + this.width > obj.x && this.y < obj.y + obj.height && this.y + this.height > obj.y;
+  }
+
+  hit(damage) {
+    this.energy -= damage;
+    if (this.energy < 0) {
+      this.energy = 0;
+    } else {
+      this.lastHit = new Date().getTime();
+    }
+  }
+
+  isHurt() {
+    let passedTime = new Date().getTime() - this.lastHit; //Difference in ms
+    passedTime = passedTime / 1000; // Difercene in seconds
+    return passedTime < 1;
+  }
+
+  isDead() {
+    return this.energy === 0;
   }
 }

@@ -23,18 +23,20 @@ class World {
     setInterval(() => {
       this.level.chickens.forEach((chicken) => {
         if (this.character.isColliding(chicken)) {
-          console.log('collided', chicken);
+          this.character.hit(20);
+          console.log(this.character.energy);
         }
       });
-    }, 1000);
+    }, 200);
 
     setInterval(() => {
       this.level.chicks.forEach((chick) => {
         if (this.character.isColliding(chick)) {
-          console.log('collided', chick);
+          this.character.hit(10);
+          console.log(this.character.energy);
         }
       });
-    }, 1000);
+    }, 200);
 
     setInterval(() => {
       this.level.bottles.forEach((bottle) => {
@@ -42,7 +44,7 @@ class World {
           console.log('collided', bottle);
         }
       });
-    }, 1000);
+    }, 200);
 
     setInterval(() => {
       this.level.coins.forEach((coin) => {
@@ -50,7 +52,7 @@ class World {
           console.log('collided', coin);
         }
       });
-    }, 1000);
+    }, 200);
   }
 
   draw() {
