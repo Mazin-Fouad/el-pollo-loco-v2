@@ -1,46 +1,10 @@
-class MovableObject {
-  x = 120;
-  y = 250;
-  img;
-  height = 150;
-  width = 100;
-  imageCache = {};
-  currentImage = 0;
+class MovableObject extends DrawableObject {
   speed = 0.15;
   speedY = 0;
   acceleration = 2.5;
   otherDirection = false;
   energy = 100;
   lastHit = 0;
-
-  draw(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
-
-  drawRectangle(ctx) {
-    if (this instanceof Character || this instanceof Chicken || this instanceof Bottle || this instanceof Coins || this instanceof Chicks || this instanceof Endboss) {
-      {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-      }
-    }
-  }
-
-  loadImg(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  loadImgs(array) {
-    array.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
-  }
 
   playAnimation(images) {
     let i = this.currentImage % images.length;
@@ -86,6 +50,8 @@ class MovableObject {
     } else {
       this.lastHit = new Date().getTime();
     }
+
+    this.world.healthStatusbar.setPercentage(this.energy);
   }
 
   isHurt() {

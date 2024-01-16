@@ -7,6 +7,8 @@ class Chicks extends MovableObject {
     './assets/imgs/3_enemies_chicken/chicken_small/1_walk/2_w.png',
     'assets/imgs/3_enemies_chicken/chicken_small/1_walk/3_w.png',
   ];
+
+  IMG_DEAD = ['./assets/imgs/3_enemies_chicken/chicken_small/2_dead/dead.png'];
   constructor() {
     super();
     this.loadImg('./assets/imgs/3_enemies_chicken/chicken_small/1_walk/1_w.png');

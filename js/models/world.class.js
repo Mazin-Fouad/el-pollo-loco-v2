@@ -1,5 +1,6 @@
 class World {
   character = new Character();
+  healthStatusbar = new HealthStatusbar();
   level = level1;
   ctx;
   canvas;
@@ -23,7 +24,7 @@ class World {
     setInterval(() => {
       this.level.chickens.forEach((chicken) => {
         if (this.character.isColliding(chicken)) {
-          this.character.hit(20);
+          this.character.hit(15);
           console.log(this.character.energy);
         }
       });
@@ -32,7 +33,7 @@ class World {
     setInterval(() => {
       this.level.chicks.forEach((chick) => {
         if (this.character.isColliding(chick)) {
-          this.character.hit(10);
+          this.character.hit(5);
           console.log(this.character.energy);
         }
       });
@@ -64,6 +65,9 @@ class World {
     // Draw the character, enemies, clouds, and background objects
     this.addObjects(this.level.backgroundObjects);
     this.drawImage(this.character);
+    this.ctx.translate(-this.camera_x, 0);
+    this.drawImage(this.healthStatusbar);
+    this.ctx.translate(this.camera_x, 0);
     this.addObjects(this.level.chickens);
     this.addObjects(this.level.chicks);
     this.addObjects(this.level.bottles);
