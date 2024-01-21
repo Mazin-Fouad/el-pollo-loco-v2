@@ -1,11 +1,11 @@
-class CoinsStatusbar extends DrawableObject {
+class BottlesStatusbar extends DrawableObject {
   IMAGES = [
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png',
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png',
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/40.png',
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/60.png',
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/80.png',
-    './assets/imgs/7_statusbars/1_statusbar/1_statusbar_coin/orange/100.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/0.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/20.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/40.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/60.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/80.png',
+    './assets/imgs/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png',
   ];
 
   percentage = 0;
@@ -15,7 +15,7 @@ class CoinsStatusbar extends DrawableObject {
     this.loadImgs(this.IMAGES);
     this.setPercentage(0);
     this.x = 22;
-    this.y = 35;
+    this.y = 80;
     this.height = 55;
     this.width = 200;
   }

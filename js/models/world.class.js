@@ -2,6 +2,7 @@ class World {
   character = new Character();
   healthStatusbar = new HealthStatusbar();
   coinsStatusbar = new CoinsStatusbar();
+  bottlesStatusbar = new BottlesStatusbar();
   level = level1;
   ctx;
   canvas;
@@ -43,6 +44,8 @@ class World {
     setInterval(() => {
       this.level.bottles.forEach((bottle) => {
         if (this.character.isColliding(bottle)) {
+          this.bottlesStatusbar.setPercentage(this.bottlesStatusbar.percentage + 20);
+          this.level.bottles.splice(bottle, 1);
           console.log('collided', bottle);
         }
       });
@@ -71,6 +74,7 @@ class World {
     this.ctx.translate(-this.camera_x, 0);
     this.drawImage(this.healthStatusbar);
     this.drawImage(this.coinsStatusbar);
+    this.drawImage(this.bottlesStatusbar);
     this.ctx.translate(this.camera_x, 0);
     this.addObjects(this.level.chickens);
     this.addObjects(this.level.chicks);
