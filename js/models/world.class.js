@@ -1,6 +1,7 @@
 class World {
   character = new Character();
   healthStatusbar = new HealthStatusbar();
+  coinsStatusbar = new CoinsStatusbar();
   level = level1;
   ctx;
   canvas;
@@ -50,6 +51,8 @@ class World {
     setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (this.character.isColliding(coin)) {
+          this.coinsStatusbar.setPercentage(this.coinsStatusbar.percentage + 20);
+          this.level.coins.splice(coin, 1);
           console.log('collided', coin);
         }
       });
@@ -67,6 +70,7 @@ class World {
     this.drawImage(this.character);
     this.ctx.translate(-this.camera_x, 0);
     this.drawImage(this.healthStatusbar);
+    this.drawImage(this.coinsStatusbar);
     this.ctx.translate(this.camera_x, 0);
     this.addObjects(this.level.chickens);
     this.addObjects(this.level.chicks);
@@ -108,44 +112,3 @@ class World {
     this.ctx.restore();
   }
 }
-
-/**
- * ! old code version, to be deleted
- */
-// draw() {
-//   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-//   this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.hight);
-//   this.enemies.forEach((enemy) => {
-//     this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.hight);
-//   });
-
-//   this.clouds.forEach((cloud) => {
-//     this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.hight);
-//   });
-
-//   this.backgroundObjects.forEach((backgroundObject) => {
-//     this.ctx.drawImage(backgroundObject.img, backgroundObject.x, backgroundObject.y, backgroundObject.width, backgroundObject.hight);
-//   });
-
-//   let self = this;
-//   requestAnimationFrame(() => self.draw());
-// }
-
-/**
- * ! old code version, to be deleted
- */
-
-// draw() {
-//   // Clear the canvas
-//   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-//   // Draw the character, enemies, clouds, and background objects
-//   this.drawImage(this.character);
-//   this.enemies.forEach((enemy) => this.drawImage(enemy));
-//   this.clouds.forEach((cloud) => this.drawImage(cloud));
-//   this.backgroundObjects.forEach((BgObj) => this.drawImage(BgObj));
-
-//   // Request the next animation frame
-//   requestAnimationFrame(() => this.draw());
-// }
